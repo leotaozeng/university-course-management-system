@@ -52,6 +52,7 @@ public class Student {
     public void assignGrade(Course course, double grade) {
         if (enrolledCourses.containsKey(course)) {
             enrolledCourses.put(course, grade);
+            System.out.println("Grade assigned successfully.");
         } else {
             System.out.println("Cannot assign grade: not enrolled in the course.");
         }

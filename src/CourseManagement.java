@@ -48,5 +48,16 @@ public class CourseManagement {
 
     // The calculateOverallGrade method should accept a Student object
     // calculate the overall course grade for that student based on the grades assigned to them
-    public static void calculateOverallGrade() {}
+    public static double calculateOverallGrade(Student student) {
+        HashMap<Course, Double> grades = studentGrades.get(student);
+        if (grades == null || grades.isEmpty()) {
+            return -1;
+        }
+
+        double totalGrades = 0;
+        for (double grade : grades.values()) {
+            totalGrades += grade;
+        }
+        return totalGrades / grades.size();
+    }
 }

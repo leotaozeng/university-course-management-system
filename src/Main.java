@@ -8,6 +8,16 @@ public class Main {
         system.run();
     }
 
+    public int getIntInput(Scanner input) {
+        while (true) {
+            try {
+                return Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid input. Please enter a valid number: ");
+            }
+        }
+    }
+
     public void run() {
         try {
             int choice;
@@ -72,6 +82,7 @@ public class Main {
                             if (gradeCourse != null) {
                                 System.out.print("Enter grade: ");
                                 double grade = input.nextDouble();
+                                input.nextLine();  // Consume newline
                                 CourseManagement.assignGrade(gradeStudent, gradeCourse, grade);
                             } else {
                                 System.out.println("Course not found.");
@@ -81,7 +92,19 @@ public class Main {
                         }
                         break;
                     case 4:
-                        CourseManagement.calculateOverallGrade();
+                        System.out.print("Enter student ID: ");
+                        int overallGradeStudentId = getIntInput(input);
+                        Student overallGradeStudent = CourseManagement.findStudentById(overallGradeStudentId);
+                        if (overallGradeStudent != null) {
+                            double overallGrade = CourseManagement.calculateOverallGrade(overallGradeStudent);
+                            if (overallGrade == -1) {
+                                System.out.println("No grades available for the student.");
+                            } else {
+                                System.out.println("Overall Grade: " + overallGrade);
+                            }
+                        } else {
+                            System.out.println("Student not found.");
+                        }
                         break;
                     case 5:
                         System.out.println("Exiting...");
@@ -95,16 +118,6 @@ public class Main {
             System.out.println("Goodbye!");
             // Close the input in a finally block to ensure it's always closed
             input.close();
-        }
-    }
-
-    public int getIntInput(Scanner input) {
-        while (true) {
-            try {
-                return Integer.parseInt(input.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.print("Invalid input. Please enter a valid number: ");
-            }
         }
     }
 }
