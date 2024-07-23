@@ -21,18 +21,60 @@ public class Main {
                 System.out.print("Enter your choice: "); // The print() method does not move the cursor to a new line.
 
                 // Get the user's choice
-                choice = CourseManagement.getIntInput(input);
+                choice = getIntInput(input);
 
                 // Switch statements to perform actions based on the user's choice
                 switch (choice) {
                     case 1:
-                        CourseManagement.addCourse(input);
+                        System.out.print("Enter course code: ");
+                        String courseCode = input.nextLine();
+
+                        System.out.print("Enter course name: ");
+                        String courseName = input.nextLine();
+
+                        System.out.print("Enter course maximum capacity: ");
+                        int maxCapacity = getIntInput(input);
+
+                        CourseManagement.addCourse(courseCode, courseName, maxCapacity);
                         break;
                     case 2:
-                        CourseManagement.enrollStudent(input);
+                        System.out.print("Enter student ID: ");
+                        int studentId = getIntInput(input);
+
+                        System.out.print("Enter student name: ");
+                        String name = input.nextLine();
+                        Student student = new Student(studentId, name);
+
+                        System.out.print("Enter course code: ");
+                        String enrollCourseCode = input.nextLine();
+                        Course enrollCourse = CourseManagement.findCourseByCode(enrollCourseCode);
+
+                        if (enrollCourse != null) {
+                            CourseManagement.enrollStudent(student, enrollCourse);
+                        } else {
+                            System.out.println("Course not found.");
+                        }
                         break;
                     case 3:
-                        CourseManagement.assignGrade(input);
+                        System.out.print("Enter student ID: ");
+                        int gradeStudentId = getIntInput(input);
+                        Student gradeStudent = CourseManagement.findStudentById(gradeStudentId);
+
+                        if (gradeStudent != null) {
+                            System.out.print("Enter course code: ");
+                            String gradeCourseCode = input.nextLine();
+                            Course gradeCourse = CourseManagement.findCourseByCode(gradeCourseCode);
+
+                            if (gradeCourse != null) {
+                                System.out.print("Enter grade: ");
+                                double grade = input.nextDouble();
+                                CourseManagement.assignGrade(gradeStudent, gradeCourse, grade);
+                            } else {
+                                System.out.println("Course not found.");
+                            }
+                        } else {
+                            System.out.println("Student not found.");
+                        }
                         break;
                     case 4:
                         CourseManagement.calculateOverallGrade();
@@ -49,6 +91,16 @@ public class Main {
             System.out.println("Goodbye!");
             // Close the input in a finally block to ensure it's always closed
             input.close();
+        }
+    }
+
+    public int getIntInput(Scanner input) {
+        while (true) {
+            try {
+                return Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid input. Please enter a valid number: ");
+            }
         }
     }
 }

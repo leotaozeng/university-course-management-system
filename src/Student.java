@@ -34,6 +34,7 @@ public class Student {
     }
 
     // Method to enroll students in courses
+    // It should accept a Course object as a parameter and add the course to the student's enrolled courses
     public void enrollInCourse(Course course) {
         int totalEnrolledStudents = Course.getTotalEnrolledStudents();
 
@@ -47,6 +48,7 @@ public class Student {
     }
 
     // Method to assign grades to students
+    // It should accept a Course object and a grade for the student and update the student's grade for that course
     public void assignGrade(Course course, double grade) {
         if (enrolledCourses.containsKey(course)) {
             enrolledCourses.put(course, grade);
