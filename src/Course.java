@@ -1,4 +1,6 @@
 public class Course {
+    private static int totalEnrolledStudents = 0;
+
     private final String courseCode; // private = restricted access
     private final String name;
     private final int maxCapacity;
@@ -20,5 +22,9 @@ public class Course {
 
     public int getMaxCapacity() {
         return maxCapacity;
+    }
+
+    public static int getTotalEnrolledStudents() {
+        return totalEnrolledStudents;
     }
 }
