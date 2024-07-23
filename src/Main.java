@@ -13,10 +13,10 @@ public class Main {
             int choice;
             do {
                 System.out.println("\nWelcome to the Course Enrollment and Grade Management System!\nHere are the options:");
-                System.out.println("1. Add New Course");
-                System.out.println("2. Enroll Student in a Course");
-                System.out.println("3. Assign Grades");
-                System.out.println("4. Calculate Course Grades");
+                System.out.println("1. Add a new course");
+                System.out.println("2. Enroll student in a course");
+                System.out.println("3. Assign grades");
+                System.out.println("4. Calculate overall course grades");
                 System.out.println("5. Exit");
                 System.out.print("Enter your choice: "); // The print() method does not move the cursor to a new line.
 
@@ -26,13 +26,13 @@ public class Main {
                 // Switch statements to perform actions based on the user's choice
                 switch (choice) {
                     case 1:
-                        CourseManagement.addNewCourse();
+                        CourseManagement.addNewCourse(input);
                         break;
                     case 2:
-                        CourseManagement.enrollStudentInCourse();
+                        CourseManagement.enrollStudentInCourse(input);
                         break;
                     case 3:
-                        CourseManagement.assignGrades();
+                        CourseManagement.assignGrades(input);
                         break;
                     case 4:
                         CourseManagement.calculateOverallCourseGrades();
