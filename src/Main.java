@@ -29,7 +29,7 @@ public class Main {
                         CourseManagement.addNewCourse(input);
                         break;
                     case 2:
-                        CourseManagement.enrollStudentInCourse(input);
+                        CourseManagement.enrollStudent(input);
                         break;
                     case 3:
                         CourseManagement.assignGrades(input);

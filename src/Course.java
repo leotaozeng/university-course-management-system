@@ -1,5 +1,5 @@
 public class Course {
-    private static int totalEnrolledStudents = 0;
+    public static int totalEnrolledStudents = 0;
 
     private final String courseCode; // private = restricted access
     private final String name;
@@ -26,5 +26,9 @@ public class Course {
 
     public static int getTotalEnrolledStudents() {
         return totalEnrolledStudents;
+    }
+
+    public static void incrementEnrolledStudents() {
+        totalEnrolledStudents++;
     }
 }

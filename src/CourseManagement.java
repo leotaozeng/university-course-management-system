@@ -29,28 +29,28 @@ public class CourseManagement {
         String courseCode = input.nextLine();
 
         System.out.print("Enter course name: ");
-        String courseName = input.nextLine();
+        String name = input.nextLine();
 
         System.out.print("Enter course maximum capacity: ");
         int maxCapacity = getIntInput(input);
 
         // Create a new Course object and add the course to the list of courses
-        Course course = new Course(courseCode, courseName, maxCapacity);
+        Course course = new Course(courseCode, name, maxCapacity);
         courseList.add(course);
 
         System.out.println("Course added successfully.");
     }
 
-    // Method to enroll students in courses
-    public static void enrollStudentInCourse(Scanner input) {
+    // Method to enroll a student in a courses
+    public static void enrollStudent(Scanner input) {
         System.out.print("Enter student ID: ");
         int studentId = getIntInput(input);
 
         System.out.print("Enter student name: ");
-        String studentName = input.nextLine();
+        String name = input.nextLine();
 
         // Create a new Student object
-        Student student = new Student(studentId, studentName);
+        Student student = new Student(studentId, name);
 
         System.out.print("Enter course code: ");
         String courseCode = input.nextLine();
@@ -58,6 +58,7 @@ public class CourseManagement {
 
         if (course != null) {
             student.enrollInCourse(course);
+            Course.incrementEnrolledStudents();
         } else {
             System.out.println("Course not found.");
         }
