@@ -5,13 +5,14 @@ public class Course {
     private final String name;
     private final int maxCapacity;
 
+    // Create a class constructor for the Course class
     public Course(String courseCode, String name, int maxCapacity) {
         this.courseCode = courseCode;
         this.name = name;
         this.maxCapacity = maxCapacity;
     }
 
-    // Getter
+    // Getter methods
     public String getName() {
         return name;
     }

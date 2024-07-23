@@ -4,23 +4,20 @@ import java.util.HashMap;
 public class Student {
     private int studentId;  // private = restricted access
     private String name;
-    private HashMap<Course, Double> courseGrades;
-    private ArrayList<Course> enrolledCourses;
+    private final HashMap<Course, Double> enrolledCourses; // Map to store courses and grades
 
-    // Create a class constructor for the Main class
+    // Create a class constructor for the Student class
     public Student(int studentId, String name) {
         this.studentId = studentId;
         this.name = name;
-        this.enrolledCourses = new ArrayList<>();
-        this.courseGrades = new HashMap<>();
+        this.enrolledCourses = new HashMap<>();
     }
 
-    // Getter
+    // Getter and Setter methods
     public String getName() {
         return name;
     }
 
-    // Setter
     public void setName(String newName) {
         name = newName;
     }
@@ -33,27 +30,29 @@ public class Student {
         studentId = newStudentId;
     }
 
-    public ArrayList<Course> getEnrolledCourses() {
+    public HashMap<Course, Double> getEnrolledCourses() {
         return enrolledCourses;
     }
 
+    // Method to enroll students in courses
     public void enrollInCourse(Course course) {
-        if (!enrolledCourses.contains(course)) {
-            // Add a new course to the ArrayList
-            enrolledCourses.add(course);
+        int totalEnrolledStudents = Course.getTotalEnrolledStudents();
+
+        if (!enrolledCourses.containsKey(course) && totalEnrolledStudents < course.getMaxCapacity()) {
+            enrolledCourses.put(course, null);
+            Course.incrementEnrolledStudents();
             System.out.println("Enrolled in course: " + course.getName());
         } else {
-            System.out.println("Already enrolled in course: " + course.getName());
+            System.out.println("Already enrolled in course: " + course.getName() + " or course is at full capacity.");
         }
     }
 
+    // Method to assign grades to students
     public void assignGrade(Course course, double grade) {
-        Double value = courseGrades.get(course);
-        if (value != null) {
-            courseGrades.put(course, grade);
-            System.out.println("Assigned grade " + grade + " for course: " + course.getName());
+        if (enrolledCourses.containsKey(course)) {
+            enrolledCourses.put(course, grade);
         } else {
-            System.out.println("Student is not enrolled in course: " + course.getName());
+            System.out.println("Cannot assign grade: not enrolled in the course.");
         }
     }
 }
