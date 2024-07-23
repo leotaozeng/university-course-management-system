@@ -43,13 +43,17 @@ public class Main {
 
                         System.out.print("Enter student name: ");
                         String name = input.nextLine();
-                        Student student = new Student(studentId, name);
 
                         System.out.print("Enter course code: ");
                         String enrollCourseCode = input.nextLine();
-                        Course enrollCourse = CourseManagement.findCourseByCode(enrollCourseCode);
 
-                        if (enrollCourse != null) {
+                        Course enrollCourse = CourseManagement.findCourseByCode(enrollCourseCode);
+                        Student student = CourseManagement.findStudentById(studentId);
+
+                        if (student == null && enrollCourse != null) {
+                            Student newStudent = new Student(studentId, name);
+                            CourseManagement.enrollStudent(newStudent, enrollCourse);
+                        } else if (student != null && enrollCourse != null) {
                             CourseManagement.enrollStudent(student, enrollCourse);
                         } else {
                             System.out.println("Course not found.");
