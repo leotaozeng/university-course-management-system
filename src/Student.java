@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Student {
@@ -41,9 +40,9 @@ public class Student {
         if (!enrolledCourses.containsKey(course) && totalEnrolledStudents < course.getMaxCapacity()) {
             enrolledCourses.put(course, null);
             Course.incrementEnrolledStudents();
-            System.out.println("Enrolled in course: " + course.getName());
+            System.out.println("Student enrolled successfully in course: " + course.getName());
         } else {
-            System.out.println("Already enrolled in course: " + course.getName() + " or course is at full capacity.");
+            System.out.println("Course is at full capacity or already enrolled in course: " + course.getName());
         }
     }
 

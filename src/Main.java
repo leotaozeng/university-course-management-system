@@ -26,16 +26,16 @@ public class Main {
                 // Switch statements to perform actions based on the user's choice
                 switch (choice) {
                     case 1:
-                        CourseManagement.addNewCourse(input);
+                        CourseManagement.addCourse(input);
                         break;
                     case 2:
                         CourseManagement.enrollStudent(input);
                         break;
                     case 3:
-                        CourseManagement.assignGrades(input);
+                        CourseManagement.assignGrade(input);
                         break;
                     case 4:
-                        CourseManagement.calculateOverallCourseGrades();
+                        CourseManagement.calculateOverallGrade();
                         break;
                     case 5:
                         System.out.println("Exiting...");

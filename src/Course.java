@@ -1,5 +1,5 @@
 public class Course {
-    public static int totalEnrolledStudents = 0;
+    public static int totalEnrolledStudents = 0; // Static variable to track total enrolled students
 
     private final String courseCode; // private = restricted access
     private final String name;
