@@ -6,6 +6,8 @@ public class CourseManagement {
     private static final ArrayList<Course> courseList = new ArrayList<>();
     private static final HashMap<Student, Course> studentGrades = new HashMap<>();
 
+    // The addCourse method should accept parameters for course information and create a new Course object
+    // It should add the course to the list of courses
     public static void addCourse(Scanner input) {
         System.out.print("Enter course code: ");
         String courseCode = input.nextLine();
@@ -16,13 +18,14 @@ public class CourseManagement {
         System.out.print("Enter course maximum capacity: ");
         int maxCapacity = getIntInput(input);
 
-        // Create a new Course object and add the course to the list of courses
         Course course = new Course(courseCode, name, maxCapacity);
         courseList.add(course);
 
         System.out.println("Course added successfully.");
     }
 
+    // The enrollStudent method should accept a Student object and a Course object
+    // It should enroll the student in the course by calling the appropriate method in the Student class
     public static void enrollStudent(Scanner input) {
         System.out.print("Enter student ID: ");
         int studentId = getIntInput(input);
@@ -30,11 +33,13 @@ public class CourseManagement {
         System.out.print("Enter student name: ");
         String name = input.nextLine();
 
-        // Create a new Student object
+        // Create a Student object
         Student student = new Student(studentId, name);
 
         System.out.print("Enter course code: ");
         String courseCode = input.nextLine();
+
+        // Find existing Course object by course code
         Course course = findCourseByCode(courseCode);
 
         if (course != null) {
