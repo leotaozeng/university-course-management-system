@@ -37,7 +37,7 @@ public class Main {
                 switch (choice) {
                     case 1:
                         System.out.print("Enter course code: ");
-                        String courseCode = input.nextLine();
+                        String courseCode = input.nextLine(); // Read a String value from the user
 
                         System.out.print("Enter course name: ");
                         String courseName = input.nextLine();

@@ -26,8 +26,9 @@ public class CourseManagement {
 
     // The addCourse method should accept parameters for course information and create a new Course object
     // It should add the course to the list of courses
-    public static void addCourse(String courseCode, String name, int maxCapacity) {
-        Course course = new Course(courseCode, name, maxCapacity);
+    public static void addCourse(String courseCode, String courseName, int maxCapacity) {
+        // Create a new Course object
+        Course course = new Course(courseCode, courseName, maxCapacity);
         courseList.add(course);
         System.out.println("Course added successfully.");
     }
