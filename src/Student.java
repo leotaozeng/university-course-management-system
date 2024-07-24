@@ -37,8 +37,8 @@ public class Student {
     // It should accept a Course object as a parameter and add the course to the student's enrolled courses
     public void enrollInCourse(Course course) {
         int totalEnrolledStudents = Course.getTotalEnrolledStudents();
-
         if (!enrolledCourses.containsKey(course) && totalEnrolledStudents < course.getMaxCapacity()) {
+            // To add items to a HashMap object, use the put() method:
             enrolledCourses.put(course, null);
             Course.incrementEnrolledStudents();
             System.out.println("Student enrolled successfully in course: " + course.getName());
@@ -54,7 +54,7 @@ public class Student {
             enrolledCourses.put(course, grade);
             System.out.println("Grade assigned successfully.");
         } else {
-            System.out.println("Cannot assign grade: not enrolled in the course.");
+            System.out.println("Cannot assign grade because not enrolled in course: " + course.getName());
         }
     }
 }

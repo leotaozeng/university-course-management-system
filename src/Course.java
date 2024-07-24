@@ -1,9 +1,9 @@
 public class Course {
-    public static int totalEnrolledStudents = 0; // Static variable to track total enrolled students
-
     private final String courseCode; // private = restricted access
     private final String name;
     private final int maxCapacity;
+
+    private static int totalEnrolledStudents = 0; // Static variable to track total enrolled students
 
     // Create a class constructor for the Course class
     public Course(String courseCode, String name, int maxCapacity) {

@@ -52,7 +52,7 @@ public class Main {
                         int studentId = getIntInput(input);
 
                         System.out.print("Enter student name: ");
-                        String name = input.nextLine();
+                        String studentName = input.nextLine();
 
                         System.out.print("Enter course code: ");
                         String enrollCourseCode = input.nextLine();
@@ -61,7 +61,7 @@ public class Main {
                         Student student = CourseManagement.findStudentById(studentId);
 
                         if (student == null && enrollCourse != null) {
-                            Student newStudent = new Student(studentId, name);
+                            Student newStudent = new Student(studentId, studentName);
                             CourseManagement.enrollStudent(newStudent, enrollCourse);
                         } else if (student != null && enrollCourse != null) {
                             CourseManagement.enrollStudent(student, enrollCourse);
@@ -72,17 +72,19 @@ public class Main {
                     case 3:
                         System.out.print("Enter student ID: ");
                         int gradeStudentId = getIntInput(input);
+
                         Student gradeStudent = CourseManagement.findStudentById(gradeStudentId);
 
                         if (gradeStudent != null) {
                             System.out.print("Enter course code: ");
-                            String gradeCourseCode = input.nextLine();
+                            String gradeCourseCode = input.nextLine(); // Read a String value from the user
+
                             Course gradeCourse = CourseManagement.findCourseByCode(gradeCourseCode);
 
                             if (gradeCourse != null) {
                                 System.out.print("Enter grade: ");
-                                double grade = input.nextDouble();
-                                input.nextLine();  // Consume newline
+                                double grade = input.nextDouble(); // Reads a double value from the user
+                                input.nextLine(); // Consume newline
                                 CourseManagement.assignGrade(gradeStudent, gradeCourse, grade);
                             } else {
                                 System.out.println("Course not found.");
@@ -100,7 +102,7 @@ public class Main {
                             if (overallGrade == -1) {
                                 System.out.println("No grades available for the student.");
                             } else {
-                                System.out.println("Overall Grade: " + overallGrade);
+                                System.out.println("Overall grade: " + overallGrade);
                             }
                         } else {
                             System.out.println("Student not found.");
