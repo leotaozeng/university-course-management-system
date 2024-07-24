@@ -24,7 +24,7 @@ public class Main {
             do {
                 System.out.println("\nWelcome to the Course Enrollment and Grade Management System!\nHere are the options:");
                 System.out.println("1. Add a new course");
-                System.out.println("2. Enroll student in a course");
+                System.out.println("2. Enroll a student in a course");
                 System.out.println("3. Assign grades");
                 System.out.println("4. Calculate overall course grades");
                 System.out.println("5. Exit");
